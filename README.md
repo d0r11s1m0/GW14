@@ -1,4 +1,4 @@
-<p align="center"> <img alt="Space Station 14" width="667" height="925" src="https://i.ibb.co/23Bdq7W6/Frame-1.png" /></p>
+<p align="center"> <img alt="Space Station 14" src="https://i.ibb.co/23Bdq7W6/Frame-1.png" /></p>
 
 RMC-14 is an asymmetric game, that runs on [Robust Toolbox](https://github.com/space-wizards/RobustToolbox).
 
