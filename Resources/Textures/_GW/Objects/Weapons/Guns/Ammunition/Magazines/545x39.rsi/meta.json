@@ -1,0 +1,20 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Mag-1 and base taken from https://github.com/space-wizards/space-station-14/tree/79e0ed38d1005356b7b8d1941ad9673d81b9c9bb/Resources/Textures/Objects/Weapons/Guns/Ammunition/Magazine/LightRifle/light_rifle_mag.rsi / ammo_band by d0r11s",
+    "size": {
+      "x": 32,
+      "y": 32
+    },
+    "states": [
+      {
+        "name": "base"
+      },
+      {
+        "name": "mag-1"
+      },
+      {
+        "name": "ammo_band"
+      }
+    ]
+  }

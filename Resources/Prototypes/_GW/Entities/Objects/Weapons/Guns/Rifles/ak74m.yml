@@ -1,0 +1,216 @@
+- type: entity
+  parent: [ CMBaseWeaponRifle, RMCBaseWeaponMagazineVisuals ]
+  name: AK-74M
+  id: GWWeaponRifleAK74M
+  description: Унифицированная модернизация автомата Калашникова. Создан для замены АК-74, АКС-74 и АКС-74У в войсках. Ключевые отличия - применение черного стеклонаполненного полиамида для цевья, ствольной накладки и приклада (повысившее долговечность и снизившее вес), складной правосторонний приклад, модернизированная конструкция для увеличения ресурса. Сохранил калибр 5.45×39 мм и проверенную временем надежность системы Калашникова.
+  components:
+  - type: Sprite
+    sprite: _GW/Objects/Weapons/Guns/Rifles/ak74m.rsi
+    layers:
+    - state: bolt-open
+      map: [ "enum.GunVisualLayers.Base" ]
+    - sprite: _GW/Objects/Weapons/Guns/Attachments/stock.rsi
+      state: ak74m_solid
+      offset: -0.43, 0
+      map: [ "stock" ]
+    - state: mag-0
+      map: [ "enum.GunVisualLayers.Mag" ]
+  - type: Clothing
+    sprite: _GW/Objects/Weapons/Guns/Rifles/ak74m.rsi
+  - type: Gun
+    shotsPerBurst: 0
+    selectedMode: FullAuto
+    availableModes:
+    - FullAuto
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_GW/Weapons/Guns/Gunshots/gun_ak74m.ogg
+  - type: RMCSelectiveFire
+    baseFireModes:
+    - FullAuto
+    - SemiAuto
+    recoilUnwielded: 4
+    scatterWielded: 6
+    scatterUnwielded: 20
+    baseFireRate: 2.86
+    burstScatterMult: 1
+  - type: RMCWeaponAccuracy
+    accuracyMultiplier: 1.3
+    accuracyMultiplierUnwielded: 0.6
+  - type: RMCWeaponDamageFalloff
+    falloffMultiplier: 0
+  - type: WieldDelay
+    baseDelay: 0.2
+  - type: WieldableSpeedModifiers
+    base: 0.725
+    light: 1
+    medium: 1
+    heavy: 1
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        insertSound: /Audio/_RMC14/Weapons/Guns/Reload/l42_reload.ogg
+        ejectSound: /Audio/_RMC14/Weapons/Guns/Reload/l42_unload.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - GWMagazineRifle545x39
+          - GWMagazineRifle545x39AP
+          #- CMMagazineRifleM4SPRExt
+  - type: GunDamageModifier
+    multiplier: 1.4
+  - type: AttachableHolder
+    slots:
+      rmc-aslot-barrel:
+        whitelist:
+          tags:
+          - RMCAttachmentExtendedBarrel
+          - RMCAttachmentSuppressor
+          - RMCM5Bayonet
+      rmc-aslot-rail:
+        whitelist:
+          tags:
+          - RMCAttachmentMagneticHarness
+          - RMCAttachmentRailFlashlight
+          - RMCAttachmentS42xTelescopicMiniscope
+          - RMCAttachmentS5RedDotSight
+          - RMCAttachmentS6ReflexSight
+          - RMCAttachmentS84xTelescopicScope
+      rmc-aslot-underbarrel:
+        whitelist:
+          tags:
+          - RMCAttachmentAngledGrip
+          - RMCAttachmentBipod
+          - RMCAttachmentFlashlightGrip
+          - RMCAttachmentLaserSight
+          - RMCAttachmentVerticalGrip
+          - RMCAttachmentExtinguisher
+  - type: AttachableHolderVisuals
+    offsets:
+      rmc-aslot-barrel: 0.75, 0.00
+      rmc-aslot-rail: 0.1, 0.09
+      rmc-aslot-underbarrel: 0.28, -0.31
+
+- type: entity
+  parent: GWWeaponRifleAK74M
+  id: GWWeaponRifleAK74MFilled
+  suffix: Filled
+  components:
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: GWMagazineRifle545x39
+        insertSound: /Audio/_RMC14/Weapons/Guns/Reload/l42_reload.ogg
+        ejectSound: /Audio/_RMC14/Weapons/Guns/Reload/l42_unload.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - GWMagazineRifle545x39
+          - GWMagazineRifle545x39AP
+          #- CMMagazineRifleM4SPRExt
+
+- type: entity
+  parent: CMMagazineRifleBase
+  id: GWMagazineRifle545x39
+  name: магазин (5.45x39мм)
+  description: Магазин с патронами 5.45x39мм, зачастую используются в автоматах серии АК.
+  components:
+  - type: Tag
+    tags:
+    - CMMagazineRifle
+    - GWMagazineRifle545x39
+  - type: BallisticAmmoProvider
+    mayTransfer: True
+    whitelist:
+      tags:
+      - GWCartridgeRifle545x39
+    proto: GWCartridgeRifle545x39
+    capacity: 30
+  - type: Sprite
+    sprite: _GW/Objects/Weapons/Guns/Ammunition/Magazines/545x39.rsi
+  #- type: RefillableByBulletBox
+  #  bulletType: RMCBoxBulletsRifle
+
+- type: entity
+  parent: GWMagazineRifle545x39
+  id: GWMagazineRifle545x39AP
+  name: магазин бронебойных (5.45x39мм)
+  description: Магазин с бронебойными патронами 5.45x39мм, зачастую используются в автоматах серии АК.
+  suffix: AP
+  components:
+  - type: Tag
+    tags:
+    - CMMagazineRifle
+    - GWMagazineRifle545x39AP
+  - type: Sprite
+    sprite: _GW/Objects/Weapons/Guns/Ammunition/Magazines/545x39.rsi
+    layers:
+    - state: base
+      map: [ "enum.GunVisualLayers.Base" ]
+    - state: mag-1
+      map: [ "enum.GunVisualLayers.Mag" ]
+    - state: ammo_band
+      color: "#1F951F"
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+      - CMCartridgeRifle10x24mmAP
+    proto: CMCartridgeRifle10x24mmAP
+  #- type: RefillableByBulletBox
+  #  bulletType: RMCBoxBulletsRifleAP
+
+#- type: entity
+#  parent: GWMagazineRifle545x39
+#  id: GWMagazineRifle545x39Ext
+#  name: расширенный магазин (5.45x39мм)
+#  components:
+#  - type: BallisticAmmoProvider
+#    capacity: 35
+#  - type: Sprite
+#    sprite: _GW/Objects/Weapons/Guns/Ammunition/Magazines/545x39.rsi TODO: Подумать над рассширенными боеприпасами под это оружие
+#    layers:
+#    - state: base
+#      map: ["enum.GunVisualLayers.Base"]
+#    - state: mag-1
+#      map: ["enum.GunVisualLayers.Mag"]
+#  - type: Tag
+#    tags:
+#    - CMMagazineRifle
+#    - GWMagazineRifle545x39Ext
+
+- type: entity
+  parent: CMBaseCartridgeRifle
+  id: GWCartridgeRifle545x39
+  name: патрон (5.45x39мм)
+  description: Патрон для штурмовых винтовок калибра 5.45x39мм
+  components:
+  - type: Tag
+    tags:
+    - Cartridge
+    - GWCartridgeRifle545x39
+  - type: CartridgeAmmo
+    proto: GWBulletRifle545x39
+
+- type: entity
+  parent: BulletRifle10x24mm
+  id: GWBulletRifle545x39
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 40
+
+- type: Tag
+  id: GWMagazineRifle545x39
+
+- type: Tag
+  id: GWMagazineRifle545x39AP
+
+- type: Tag
+  id: GWCartridgeRifle545x39
+
+#- type: Tag
+#  id: GWMagazineRifle545x39Ext
